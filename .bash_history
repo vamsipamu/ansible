@@ -239,3 +239,104 @@ ansible-playbook myfirstplaybook.yml
 vim tasks/main.yml
 vim prodrole/tasks/main.yml
 ansible-playbook myfirstplaybook.yml 
+git remote remove origin
+git remote -v
+ansible-playbook installpackages.yml 
+
+pip install boto3
+ansible-galaxy collection install amazon.aws
+ansible-galaxy collection install amazon.aws --force
+openssl rand -base64 2048 > vault.pass
+ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
+ansible-galaxy collection install karcadia.aws
+pip install boto3
+vim createec2.yml 
+ansible-galaxy role init ec2
+cd ec2/
+ll
+cd 
+..
+sudo -i
+ll
+anisble all -m ping
+ansible all -m ping
+ansible-galaxy init role install ansible-galaxy role install frozenfoxx.docker_container
+ansible-galaxy role install frozenfoxx.docker_container
+ansible-galaxy role list
+vim myfirst
+vim myfirstplaybook.yml 
+vim frozenfoxx.docker_container/main.yml
+ll
+ls ~./ansible/roles
+ls ~/.ansible/roles
+ansible-playbook myfirstplaybook.yml 
+ll
+vim install_httpd.yml 
+vim installpackages.yml 
+ansible-playbook installpackages.yml 
+vim installpackages.yml 
+ansible-playbook installpackages.yml 
+git init
+ls
+git remote add origin https://github.com/vamsipamu/samplerepotoansiblegalaxy.git
+git remote -v
+git add .
+git commit -m "first commit"
+cd..
+su 
+vim createec2.yml 
+ansible-playbook myfirstplaybook.yml 
+vim createec2.yml 
+vim ec2.yml---
+vim ec2.yml
+cd ec2/
+ll
+vim tasks/main.yml
+openssl rand -base64 2048 > vault.pass
+ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
+vim tasks/main.yml
+ansible-playbook ec2.yml
+cd ../
+ll
+vim ec2.yml 
+ansible-playbook ec2.yml
+vim ec2.yml 
+ansible-playbook ec2.yml
+ansible-playbook ec2.yml -vault-password-file vault.file
+cd ec2/
+ansible-playbook ec2.yml -vault-password-file vault.file
+ansible-playbook -i inventory ec2.yml -vault-password-file vault.file
+ansible-playbook ec2.yml -vault-password-file vault.filecd ..
+cd../ll
+cd../
+cd..
+cd
+ll
+ansible-playbook ec2.yml -vault-password-file vault.filecd ..
+ansible-playbook ec2.yml -vault-password-file vault.file
+vim vault.pass 
+ansible-playbook ec2.yml -vault-password-file vault.pass
+ansible-playbook ec2.yml --vault-password-file vault.pass
+vim ec2/tasks/main.yml 
+ansible-playbook ec2.yml --vault-password-file vault.pass
+vim ec2/tasks/main.yml 
+ansible-vault edit group_vars/all/pass.yml --vault-password-file vault.pass
+ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
+ansible-vault edit group_vars/all/pass.yml --vault-password-file vault.pass
+ansible-playbook ec2.yml --vault-password-file vault.pass
+vim ec2/tasks/main.yml 
+ansible-playbook ec2.yml --vault-password-file vault.pass
+ll
+ansible-playbook loops.yml 
+ansible-playbook loops.yml --vault-password-file vault.pass
+ansible-vault
+ansible-vault create vault.yml
+ansible-vault create aws_cred.yml
+ansible-vault edit aws_cred.yml
+ansible-vault rekey aws_cred.yml
+ansible-vault view aws_cred.yml
+ansible-vault encrypt aws_cred.yml
+ansible-vault encrypt loops.yml 
+ansible-vault decrypt loops.yml 
+ansible-vault create myvault.yml --vault-password-file vault.pass
+su ec2-user

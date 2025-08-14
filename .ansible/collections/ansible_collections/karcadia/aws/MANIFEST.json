@@ -1,0 +1,37 @@
+{
+ "collection_info": {
+  "namespace": "karcadia",
+  "name": "aws",
+  "version": "0.0.6",
+  "authors": [
+   "Justin McCormick <karcadia@gmail.com>"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "amazon",
+   "aws",
+   "community"
+  ],
+  "description": "Modules to augment amazon.aws and community.aws.",
+  "license": [
+   "GPL-2.0-or-later"
+  ],
+  "license_file": null,
+  "dependencies": {
+   "amazon.aws": ">=9.1",
+   "community.aws": ">=9.1"
+  },
+  "repository": "http://example.com/repository",
+  "documentation": "http://docs.example.com",
+  "homepage": "http://example.com",
+  "issues": "http://example.com/issue/tracker"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "9cab2b7ffec29cbb01977d1181fdbaef9164cd87d6143fb77d17bb2c756c04cd",
+  "format": 1
+ },
+ "format": 1
+}

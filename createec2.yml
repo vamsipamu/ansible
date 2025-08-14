@@ -9,7 +9,7 @@
         name: "ansible-instance"
         key_name: "kopskey"
         instance_type: "t3.micro"
-        image_id: ami-0169aa51f6faf20d5 
+        image_id: ami-0de716d6197524dd9
         region: "us-east-1"
         wait: yes
         count: 1
