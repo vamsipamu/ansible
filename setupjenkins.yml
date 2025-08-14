@@ -1,0 +1,35 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+  tasks:
+    - name: jenkins setup on remote servers
+      get_url:
+        url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
+   
+    - name: Import Jenkins key
+      rpm_key:
+        state: present
+        key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+   
+    - name: Install Java 8 on Amazon Linux
+      yum:
+        name: java-1.8.0-openjdk-devel
+        state: present
+      
+
+    - name: Install Jenkins
+      yum:
+        name: jenkins
+        state: present
+      when: ansible_distribution in ["Amazon", "CentOS", "RedHat"]
+
+    - name: Start and enable Jenkins
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
+
+
+     

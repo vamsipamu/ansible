@@ -1,0 +1,16 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  tasks:
+    - name: Install Apache using passed variable
+      yum:
+        name: "{{ apache_package }}"
+        state: present
+
+    - name: Start and enable Apache
+      service:
+        name: "{{ apache_package }}"
+        state: started
+        enabled: yes
+

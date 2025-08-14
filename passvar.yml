@@ -1,0 +1,8 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+  tasks:
+    - include_tasks: variables.yml 
+    - name: install docker
+      action: yum name={{abc}} state=present

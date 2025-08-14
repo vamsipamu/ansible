@@ -1,0 +1,94 @@
+
+- name: Setup Apache Tomcat
+  hosts: all
+  become: yes
+
+  vars:
+    tomcat_version: 9.0.85
+    tomcat_install_dir: /opt/tomcat
+
+  tasks:
+    - name: Install Java 17 on Amazon Linux
+      yum:
+        name: java-17-amazon-corretto-devel
+        state: present
+      when: ansible_distribution == "Amazon"
+
+ 
+    - name: Create Tomcat group
+      group:
+        name: tomcat
+
+    - name: Create Tomcat user
+      user:
+        name: tomcat
+        group: tomcat
+        shell: /bin/false
+
+    - name: Download Tomcat
+      get_url:
+        url: "https://downloads.apache.org/tomcat/tomcat-9/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
+        dest: "/tmp/apache-tomcat-{{ tomcat_version }}.tar.gz"
+
+    - name: Create Tomcat installation directory
+      file:
+        path: "{{ tomcat_install_dir }}"
+        state: directory
+        owner: tomcat
+        group: tomcat
+
+    - name: Extract Tomcat
+      unarchive:
+        src: "/tmp/apache-tomcat-{{ tomcat_version }}.tar.gz"
+        dest: "{{ tomcat_install_dir }}"
+        remote_src: yes
+        creates: "{{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}"
+
+    - name: Set permissions
+      file:
+        path: "{{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}"
+        state: directory
+        recurse: yes
+        owner: tomcat
+        group: tomcat
+
+    - name: Create systemd service file
+      copy:
+        dest: /etc/systemd/system/tomcat.service
+        content: |
+          [Unit]
+          Description=Apache Tomcat Web Application Container
+          After=network.target
+
+          [Service]
+          Type=forking
+
+          Environment=JAVA_HOME=/usr/lib/jvm/jre
+          Environment=CATALINA_PID={{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}/temp/tomcat.pid
+          Environment=CATALINA_HOME={{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}
+          Environment=CATALINA_BASE={{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}
+          Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+          Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+          ExecStart={{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}/bin/startup.sh
+          ExecStop={{ tomcat_install_dir }}/apache-tomcat-{{ tomcat_version }}/bin/shutdown.sh
+
+          User=tomcat
+          Group=tomcat
+          UMask=0007
+          RestartSec=10
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd
+      command: systemctl daemon-reexec
+
+    - name: Start and enable Tomcat
+      service:
+        name: tomcat
+        state: started
+        enabled: yes
+
+

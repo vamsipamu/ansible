@@ -1,0 +1,11 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+  tasks: 
+    - name: install apache server
+      command: apt-get-y insta;ll apache2
+      when: ansible_os_family== "Debian"
+    - name: install apache server
+      command: yum install httpd -y
+      when: ansible_os_family== "RedHat"

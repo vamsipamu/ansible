@@ -1,0 +1,11 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+  tasks: 
+    - name: install git
+      action: yum name=git state=present
+      tags: ins
+    - name: uninstall git
+      action: yum name=git state=absent
+      tags: unins

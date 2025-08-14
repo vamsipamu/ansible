@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/root/prodrole/defaults'
+let g:netrw_dirhist_1='/root/roles/myfirstrole1/vars'

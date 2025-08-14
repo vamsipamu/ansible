@@ -1,0 +1,12 @@
+--- 
+- hosts: all
+  connection: ssh
+  user: root
+  tasks:
+    - name: adding contet
+      copy:
+        dest: "/root/vamsi/ekniranjan"
+        content: |
+          this is my practice
+          on my way to lead the stst
+          wants to put more efforts into and want to became DE soon  

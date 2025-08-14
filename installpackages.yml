@@ -1,0 +1,21 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+
+  tasks: 
+    - name: install git
+      action: yum name=git state=present
+    - name: install docker
+      yum: name=docker state=present
+    - name: install httpd
+      command: yum install httpd -y
+    - name: copy index.html to remote
+      copy: 
+        src: /root/index.html
+        dest: "/root"
+
+    - name: download the url
+      get_url:
+        url: https://tomcat.apache.org/native-download.cgi
+        dest: "/root"  

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+  vars:
+    abc: docker
+    xyz: maven
+  tasks:
+    - name: install git
+      action: yum name={{abc}} state=present
+    - name: install maven
+      action: yum name={{xyz}} state=present

@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  connection: ssh
+  user: root
+  tasks:
+    - name: install httpd
+      action: yum name=httpd state=present
+    - name: start httpd
+      service: name=httpd state=restarted
+    - name: copy index.html
+      copy:
+        src: /root/index.html
+        dest: /var/www/html/index.html
+  

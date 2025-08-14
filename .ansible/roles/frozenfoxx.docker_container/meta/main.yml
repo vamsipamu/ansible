@@ -1,0 +1,16 @@
+galaxy_info:
+  author: frozenfoxx
+  description: Deploy Docker containers
+  company: Cult of Foxx
+  role_name: docker_container
+  namespace: frozenfoxx
+
+  license: Apache-2.0
+
+  min_ansible_version: "2.10"
+
+  galaxy_tags:
+    - docker
+    - linux
+
+dependencies: []

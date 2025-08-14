@@ -1,0 +1,9 @@
+--- 
+- hosts: all
+  connection: ssh
+  user: root
+  tasks:
+    - name: create  file
+      file:
+        path: "/root/ansiblepractice.txt"
+        state: touch

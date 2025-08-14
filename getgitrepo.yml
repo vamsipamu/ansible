@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  connection: ssh
+  user: root
+  tasks:
+    - name: get the repo from origin
+      git:
+        repo: "https://github.com/vamsipamu/ansible.git"
+        dest: "/root/mycode"

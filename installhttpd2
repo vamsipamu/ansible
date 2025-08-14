@@ -1,0 +1,10 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  user: root
+  tasks:
+    - name: install & start httpd
+      action: yum name=httpd state=absent
+    - name: start the httpd
+      service: name=httpd state=started  

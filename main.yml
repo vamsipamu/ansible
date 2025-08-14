@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: ssh
+  vars:
+    package_name: httpd
+
+  tasks:
+    - name: Include install_httpd.yml and pass variable
+      include: install_httpd.yml
+      vars:
+        apache_package: "{{ package_name }}"
+

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  connection: ssh
+  user: root
+  tasks:
+    - name: creating directory
+      file:
+        path: "/root/vamsi"
+        state: directory

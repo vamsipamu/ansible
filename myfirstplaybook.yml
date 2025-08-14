@@ -1,0 +1,6 @@
+---
+- hosts: all
+  user: root
+  connection: ssh
+  roles: 
+   - frozenfoxx.docker_container
